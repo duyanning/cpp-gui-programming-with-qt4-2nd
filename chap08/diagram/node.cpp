@@ -1,5 +1,5 @@
 #include <QtWidgets>
-
+//#include <iostream>
 #include "link.h"
 #include "node.h"
 
@@ -9,18 +9,19 @@ Node::Node()
     myOutlineColor = Qt::darkBlue;
     myBackgroundColor = Qt::white;
 
-    setFlags(ItemIsMovable | ItemIsSelectable);
+    setFlags(ItemIsMovable | ItemIsSelectable | ItemSendsGeometryChanges);
 }
 
 Node::~Node()
 {
+    // 边是从属于节点的
     foreach (Link *link, myLinks)
         delete link;
 }
 
 void Node::setText(const QString &text)
 {
-    prepareGeometryChange();
+    prepareGeometryChange(); // 文本变了可能会导致节点大小的变化
     myText = text;
     update();
 }
@@ -76,6 +77,7 @@ void Node::removeLink(Link *link)
 QRectF Node::boundingRect() const
 {
     const int Margin = 1;
+    // 在边框之外再加上白边
     return outlineRect().adjusted(-Margin, -Margin, +Margin, +Margin);
 }
 
@@ -94,7 +96,7 @@ void Node::paint(QPainter *painter,
                  QWidget * /* widget */)
 {
     QPen pen(myOutlineColor);
-    if (option->state & QStyle::State_Selected) {
+    if (option->state & QStyle::State_Selected) { // 选中节点的边框为虚线
         pen.setStyle(Qt::DotLine);
         pen.setWidth(2);
     }
@@ -109,6 +111,7 @@ void Node::paint(QPainter *painter,
     painter->drawText(rect, Qt::AlignCenter, myText);
 }
 
+// 双击编辑节点文字
 void Node::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
 {
     QString text = QInputDialog::getText(event->widget(),
@@ -121,9 +124,12 @@ void Node::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
 QVariant Node::itemChange(GraphicsItemChange change,
                           const QVariant &value)
 {
+    //qDebug() << change << '\n';
     if (change == ItemPositionHasChanged) {
         foreach (Link *link, myLinks)
-            link->trackNodes();
+            link->trackNodes(); // 看意思是移动节点后，边会跟着动。但实测发现边并没跟着动
+        // 发现原来是移动节点时，本函数并未被调用。原来在Qt 5.9.2中需要设置ItemSendsGeometryChanges才行
+        // 参考：https://stackoverflow.com/questions/8187807/itemchanged-never-called-on-qgraphicsitem
     }
     return QGraphicsItem::itemChange(change, value);
 }
@@ -133,8 +139,11 @@ QRectF Node::outlineRect() const
     const int Padding = 8;
     QFontMetricsF metrics = (QFontMetricsF)qApp->font();
     QRectF rect = metrics.boundingRect(myText);
+    // 文字框四周加上填充
     rect.adjust(-Padding, -Padding, +Padding, +Padding);
+    //qDebug() << "old:" <<  rect << '\n';
     rect.translate(-rect.center());
+    //qDebug() << "new:" <<  rect << '\n';
     return rect;
 }
 

@@ -49,6 +49,9 @@ void DiagramWindow::addLink()
     scene->addItem(link);
 }
 
+// 可以选中多个元素，然后按del键。
+// 删除节点，节点关联的边也会被删除(边是依附于节点的)
+// 也可以独立删除边(节点不会受影响)
 void DiagramWindow::del()
 {
     QList<QGraphicsItem *> items = scene->selectedItems();
@@ -88,6 +91,7 @@ void DiagramWindow::copy()
     QApplication::clipboard()->setText(str);
 }
 
+// 将节点复制到剪贴板的内容形如Node #008000 #000080 #ffffff Node 1
 void DiagramWindow::paste()
 {
     QString str = QApplication::clipboard()->text();
@@ -123,13 +127,14 @@ void DiagramWindow::properties()
     if (node) {
         PropertiesDialog dialog(node, this);
         dialog.exec();
-    } else if (link) {
+    } else if (link) { // 根本走不到这个分支，因为只选中边，菜单中的属性菜单项是灰的
         QColor color = QColorDialog::getColor(link->color(), this);
         if (color.isValid())
             link->setColor(color);
     }
 }
 
+// 根据当前的状况，调整菜单项、工具栏按钮的使能/禁用状态
 void DiagramWindow::updateActions()
 {
     bool hasSelection = !scene->selectedItems().isEmpty();
@@ -144,6 +149,7 @@ void DiagramWindow::updateActions()
     sendToBackAction->setEnabled(isNode);
     propertiesAction->setEnabled(isNode);
 
+    // 下面两个循环是在构造view的右键菜单
     foreach (QAction *action, view->actions())
         view->removeAction(action);
 

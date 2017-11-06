@@ -47,4 +47,5 @@ QColor Link::color() const
 void Link::trackNodes()
 {
     setLine(QLineF(myFromNode->pos(), myToNode->pos()));
+    qDebug() << myFromNode << " -> " << myToNode << '\n';
 }
