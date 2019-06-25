@@ -44,8 +44,9 @@ QColor Link::color() const
     return pen().color();
 }
 
+// 节点移动了，重新画边
 void Link::trackNodes()
 {
     setLine(QLineF(myFromNode->pos(), myToNode->pos()));
-    qDebug() << myFromNode << " -> " << myToNode << '\n';
+    //qDebug() << myFromNode << " -> " << myToNode << '\n';
 }

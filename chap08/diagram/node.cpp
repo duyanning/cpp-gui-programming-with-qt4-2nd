@@ -139,11 +139,12 @@ QRectF Node::outlineRect() const
     const int Padding = 8;
     QFontMetricsF metrics = (QFontMetricsF)qApp->font();
     QRectF rect = metrics.boundingRect(myText);
+//    qDebug() << "rect1:" <<  rect << '\n';
     // 文字框四周加上填充
     rect.adjust(-Padding, -Padding, +Padding, +Padding);
-    //qDebug() << "old:" <<  rect << '\n';
-    rect.translate(-rect.center());
-    //qDebug() << "new:" <<  rect << '\n';
+//    qDebug() << "rect2:" <<  rect << '\n';
+    rect.translate(-rect.center());  // 将矩形四个角的坐标减去矩形中心的坐标(鬼知道此时原点在哪里)，得到的四个坐标是以矩形中心为原点的
+//    qDebug() << "rect3:" <<  rect << '\n';
     return rect;
 }
 
