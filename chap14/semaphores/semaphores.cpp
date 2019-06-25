@@ -5,8 +5,8 @@ const int DataSize = 100000;
 const int BufferSize = 4096;
 char buffer[BufferSize];
 
-QSemaphore freeSpace(BufferSize);
-QSemaphore usedSpace(0);
+QSemaphore freeSpace(BufferSize); // 空格子
+QSemaphore usedSpace(0); // 满格子
 
 class Producer : public QThread
 {
@@ -32,9 +32,9 @@ public:
 void Consumer::run()
 {
     for (int i = 0; i < DataSize; ++i) {
-        usedSpace.acquire();
+        usedSpace.acquire(); // p操作
         std::cerr << buffer[i % BufferSize];
-        freeSpace.release();
+        freeSpace.release(); // v操作
     }
     std::cerr << std::endl;
 }
