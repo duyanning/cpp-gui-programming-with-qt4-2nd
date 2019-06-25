@@ -1,2 +1,10 @@
 *.pro.user
 build-*
+.qmake.stash
+.vs
+debug/
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+release/
