@@ -5,3 +5,5 @@ HEADERS       = thread.h \
 SOURCES       = main.cpp \
                 thread.cpp \
                 threaddialog.cpp
+
+QT += widgets
