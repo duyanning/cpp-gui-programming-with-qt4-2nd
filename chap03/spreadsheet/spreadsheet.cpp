@@ -1,7 +1,11 @@
-#include <QtGui>
+#include <QtWidgets>
 
-#include "cell.h"
+#include "cell.h" // usingcpp
 #include "spreadsheet.h"
+
+// using nocheck spreadsheet.h.moc.cpp
+// cpps-make spreadsheet.h.moc.cpp : spreadsheet.h // moc spreadsheet.h -o spreadsheet.h.moc.cpp
+
 
 Spreadsheet::Spreadsheet(QWidget *parent)
     : QTableWidget(parent)

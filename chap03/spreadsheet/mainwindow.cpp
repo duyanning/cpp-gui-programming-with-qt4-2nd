@@ -1,10 +1,20 @@
-#include <QtGui>
+﻿#include <QtWidgets>
 
-#include "finddialog.h"
-#include "gotocelldialog.h"
-#include "mainwindow.h"
-#include "sortdialog.h"
-#include "spreadsheet.h"
+#include "finddialog.h" // usingcpp
+#include "gotocelldialog.h" // usingcpp
+#include "mainwindow.h" // 这是本.cpp自己的.h
+#include "sortdialog.h" // usingcpp
+#include "spreadsheet.h" // usingcpp
+
+
+// 引入附属的.h.moc.cpp
+// using nocheck mainwindow.h.moc.cpp
+// cpps-make mainwindow.h.moc.cpp : mainwindow.h // moc mainwindow.h -o mainwindow.h.moc.cpp
+
+
+// 在使用资源的.cpp中引入.qrc.rcc.cpp
+// using nocheck spreadsheet.qrc.rcc.cpp
+// cpps-make spreadsheet.qrc.rcc.cpp : spreadsheet.qrc // rcc spreadsheet.qrc -o spreadsheet.qrc.rcc.cpp
 
 MainWindow::MainWindow()
 {

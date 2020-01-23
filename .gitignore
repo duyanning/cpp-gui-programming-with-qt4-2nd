@@ -8,3 +8,6 @@ debug/
 *.vcxproj.filters
 *.vcxproj.user
 release/
+*.moc.cpp
+*.rcc.cpp
+ui_*.h

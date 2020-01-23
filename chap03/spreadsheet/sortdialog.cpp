@@ -1,6 +1,13 @@
-#include <QtGui>
+﻿#include <QtWidgets>
 
 #include "sortdialog.h"
+// 这个对话框是用界面设计器生成的，所以还得产生相应的ui_*.h
+// cpps-make ui_sortdialog.h : sortdialog.ui // uic sortdialog.ui -o ui_sortdialog.h
+
+// 引入附属的.h.moc.cpp
+// using nocheck sortdialog.h.moc.cpp
+// cpps-make sortdialog.h.moc.cpp : sortdialog.h // moc sortdialog.h -o sortdialog.h.moc.cpp
+
 
 SortDialog::SortDialog(QWidget *parent)
     : QDialog(parent)

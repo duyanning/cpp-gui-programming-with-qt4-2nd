@@ -1,6 +1,10 @@
-#include <QtGui>
+﻿#include <QtWidgets>
 
 #include "finddialog.h"
+
+// 这个对话框没用界面设计器，所以只需引入附属的.h.moc.cpp
+// using nocheck finddialog.h.moc.cpp
+// cpps-make finddialog.h.moc.cpp : finddialog.h // moc finddialog.h -o finddialog.h.moc.cpp
 
 FindDialog::FindDialog(QWidget *parent)
     : QDialog(parent)
