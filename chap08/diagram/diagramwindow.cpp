@@ -8,6 +8,9 @@
 // using nocheck diagramwindow.h.moc.cpp
 // cpps-make diagramwindow.h.moc.cpp : diagramwindow.h // moc diagramwindow.h -o diagramwindow.h.moc.cpp
 
+// using nocheck resources.qrc.rcc.cpp
+// cpps-make resources.qrc.rcc.cpp : resources.qrc // rcc resources.qrc -o resources.qrc.rcc.cpp
+
 
 DiagramWindow::DiagramWindow()
 {
