@@ -3,6 +3,10 @@
 
 #include "cityview.h"
 
+// using nocheck cityview.h.moc.cpp
+// cpps-make cityview.h.moc.cpp : cityview.h // moc cityview.h -o cityview.h.moc.cpp
+
+
 CityView::CityView(QWidget *parent)
     : QGraphicsView(parent)
 {

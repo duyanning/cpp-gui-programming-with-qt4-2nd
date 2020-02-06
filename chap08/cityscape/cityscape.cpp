@@ -1,9 +1,13 @@
-#include <QtGui>
+#include <QtWidgets>
 
-#include "annotation.h"
-#include "cityblock.h"
+#include "annotation.h" // usingcpp
+#include "cityblock.h" // usingcpp
 #include "cityscape.h"
-#include "cityview.h"
+#include "cityview.h" // usingcpp
+
+// using nocheck cityscape.h.moc.cpp
+// cpps-make cityscape.h.moc.cpp : cityscape.h // moc cityscape.h -o cityscape.h.moc.cpp
+
 
 Cityscape::Cityscape()
 {

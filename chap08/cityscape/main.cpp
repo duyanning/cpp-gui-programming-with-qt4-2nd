@@ -1,6 +1,6 @@
 #include <QApplication>
 
-#include "cityscape.h"
+#include "cityscape.h" // usingcpp
 
 int main(int argc, char *argv[])
 {
