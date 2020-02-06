@@ -3,6 +3,12 @@
 #include "node.h"
 #include "propertiesdialog.h"
 
+// using nocheck propertiesdialog.h.moc.cpp
+// cpps-make propertiesdialog.h.moc.cpp : propertiesdialog.h // moc propertiesdialog.h -o propertiesdialog.h.moc.cpp
+
+// cpps-make ui_propertiesdialog.h : propertiesdialog.ui // uic propertiesdialog.ui -o ui_propertiesdialog.h
+
+
 PropertiesDialog::PropertiesDialog(Node *node, QWidget *parent)
     : QDialog(parent)
 {

@@ -1,7 +1,9 @@
-#include <QtWidgets>
+﻿#include <QtWidgets>
 //#include <iostream>
 #include "link.h"
 #include "node.h"
+
+
 
 Node::Node()
 {

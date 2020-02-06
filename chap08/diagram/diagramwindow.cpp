@@ -1,9 +1,13 @@
-#include <QtWidgets>
+﻿#include <QtWidgets>
 
 #include "diagramwindow.h"
-#include "link.h"
-#include "node.h"
-#include "propertiesdialog.h"
+#include "link.h" // usingcpp
+#include "node.h" // usingcpp
+#include "propertiesdialog.h" // usingcpp
+
+// using nocheck diagramwindow.h.moc.cpp
+// cpps-make diagramwindow.h.moc.cpp : diagramwindow.h // moc diagramwindow.h -o diagramwindow.h.moc.cpp
+
 
 DiagramWindow::DiagramWindow()
 {
