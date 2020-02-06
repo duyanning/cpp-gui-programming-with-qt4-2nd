@@ -7,6 +7,10 @@
 
 #include "oventimer.h"
 
+
+// using nocheck oventimer.h.moc.cpp
+// cpps-make oventimer.h.moc.cpp : oventimer.h // moc oventimer.h -o oventimer.h.moc.cpp
+
 const double DegreesPerMinute = 7.0;
 const double DegreesPerSecond = DegreesPerMinute / 60;
 const int MaxMinutes = 45;
